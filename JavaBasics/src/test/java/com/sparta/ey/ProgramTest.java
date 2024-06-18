@@ -8,6 +8,9 @@ import javax.lang.model.type.ErrorType;
 
 public class ProgramTest {
 
+//    checks for string input instead of int
+//    check that the string isn't empty
+
     @Test
     @DisplayName("Given a time of 8, then the greeting should be Good morning!")
     void checkThat8GivesGoodMorning() {
@@ -45,13 +48,7 @@ public class ProgramTest {
     @DisplayName("Given a time of -1, then an error should be thrown")
     void checkThatNegative1ThrowsError(){
         int time = -1;
-        Assertions.assertThrows(
-                Exception.class,
-                () -> Program.getGreeting(time),
-                "Expected getGreeting to throw error, but it didn't"
-        );
+        Assertions.assertThrows(Exception.class, () -> Program.getGreeting(time), "Expected getGreeting to throw error, but it didn't"); // Assertions.assertThrows(expectedType, executable, message);
     }
-
-    
 
 }
