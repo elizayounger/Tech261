@@ -12,6 +12,7 @@ public class FizzBuzzTest {
     // if the number is divisible by 5 print "Buzz"
     // If it's divisible by both print "FizzBuzz"
 
+
     @DisplayName("Given An Input Of One FizzBuzz Returns One")
     @Test
     void GivenAnInputOfOneFizzBuzzReturnsOne() {
