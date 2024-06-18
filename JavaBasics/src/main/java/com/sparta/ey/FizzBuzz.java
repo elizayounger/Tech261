@@ -9,8 +9,6 @@ public class FizzBuzz {
             fizzBuzzString = "Fizz";
         } else if (number % 5 == 0) {
             fizzBuzzString = "Buzz";
-        } else {
-            fizzBuzzString = Integer.toString(number);
         }
         return fizzBuzzString;
     }
