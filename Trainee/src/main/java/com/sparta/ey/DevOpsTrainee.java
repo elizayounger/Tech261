@@ -4,14 +4,17 @@ package com.sparta.ey;
 //certifications
 //projects
 
-public class DevOpsTrainee {
-    private String exerience;
-    private String certifications;
-    private String projects;
+public class DevOpsTrainee extends Trainee implements Trainable {
+    public DevOpsTrainee(String name, int age, String email, String phone, String experience, String[] projects, String[] certifications) {
+        super(name, age, email, phone, experience, projects, certifications);
+    }
 
-    public DevOpsTrainee(String exerience, String certifications, String projects) {
-        this.exerience = exerience;
-        this.certifications = certifications;
-        this.projects = projects;
+    @Override
+    public void train() {
+        System.out.println("Implementation of train in DevOpsTrainee Class");
+    }
+    @Override
+    public void study() {
+        System.out.println("Implementation of study in DevOpsTrainee Class");
     }
 }

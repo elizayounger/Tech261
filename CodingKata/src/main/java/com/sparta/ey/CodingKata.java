@@ -14,6 +14,7 @@ public class CodingKata {
         System.out.println(result);
     }
 
+    // TODO: change method name
     public static Integer CodingKata1(int[] sequence) {
         String concatString = "";
         for (int element : sequence) {
@@ -21,6 +22,8 @@ public class CodingKata {
         }
         return Integer.parseInt(concatString);
     }
+//     TODO: change method name
+//    should this be public??
     public static int checkNegative(int number) {
         if (number < 0) {
             number = -number;
@@ -28,4 +31,6 @@ public class CodingKata {
         return number;
     }
 }
+
+// 1. intention
 
