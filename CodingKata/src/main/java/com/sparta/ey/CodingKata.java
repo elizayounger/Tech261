@@ -17,9 +17,15 @@ public class CodingKata {
     public static Integer CodingKata1(int[] sequence) {
         String concatString = "";
         for (int element : sequence) {
-            concatString += String.valueOf(element);
+            concatString += String.valueOf(checkNegative(element));
         }
         return Integer.parseInt(concatString);
+    }
+    public static int checkNegative(int number) {
+        if (number < 0) {
+            number = -number;
+        }
+        return number;
     }
 }
 

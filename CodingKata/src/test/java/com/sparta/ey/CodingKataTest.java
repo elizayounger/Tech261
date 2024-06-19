@@ -13,11 +13,13 @@ public class CodingKataTest {
     public void testCodingKata1() {
         assertEquals(1024, CodingKata.CodingKata1(new int[]{1, 0, 2, 4}));
         assertEquals(123456, CodingKata.CodingKata1(new int[]{1, 2, 3, 4, 5, 6}));
+        assertEquals(24, CodingKata.CodingKata1(new int[]{0, 0, 2, 4}));
+        assertEquals(24, CodingKata.CodingKata1(new int[]{0, 0, -2, 4}));
         assertEquals(0, CodingKata.CodingKata1(new int[]{0}));
         assertEquals(123, CodingKata.CodingKata1(new int[]{1, 2, 3}));
         assertEquals(987654321, CodingKata.CodingKata1(new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1}));
     }
-    
+
 //Gherkin Scenarios: Convert array of integers to a single integer
 //    Scenario: Convert a simple array to a single integer
 //    Given an array of integers [1, 0, 2, 4]
@@ -80,6 +82,19 @@ public class CodingKataTest {
         // Assert
         assertEquals(expected, actual);
     }
+
+    @DisplayName("Checks for negative numbers")
+    @Test
+    void CheckForNegatives() {
+        // arrange
+        int input = -1;
+        int expected = 1;
+        // Act
+        int actual = CodingKata.checkNegative(input);
+        // Assert
+        assertEquals(expected, actual);
+    }
+
 }
 
 //    Scenario: Convert an empty array to a single integer

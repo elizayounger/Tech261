@@ -7,6 +7,5 @@ public class App {
 
         cat.play();
         dog.play();
-        dog.
     }
 }
