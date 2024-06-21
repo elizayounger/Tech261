@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IdenticalNeighboursTest {
-    @DisplayName("Given an array of less than 3 should return false")
+    
     @Test
     void givenAnInputOfLessThan3DigitsReturnFalse() {
         // Arrange
@@ -18,8 +18,6 @@ public class IdenticalNeighboursTest {
         assertEquals(expected, actual);
     }
 
-    // checks that it correctly identifies 3 in a row
-    @DisplayName("Given An Input Of 23334 return true")
     @Test
     void givenAnInputOf23334ReturnTrue() {
         // Arrange

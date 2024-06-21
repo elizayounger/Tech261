@@ -12,11 +12,11 @@ public class IdenticalNeighbours {
     }
 
     public static boolean hasRowOfThree(int[] nums) {
-        // checks array is at least 3 in length
-        int checkIterations = nums.length - 2;
         if (nums.length < 3) {
             return(false);
         }
+        // checks array is at least 3 in length
+        int checkIterations = nums.length - 2;
         for (int index = 0; index < checkIterations; index++) {
             if (nums[index] == nums[index+1] && nums[index] == nums[index+2]) {
                 return true;
