@@ -6,25 +6,23 @@ package com.sparta.ey;
 //    should return the int 1024.
 //    Use TDD and ask if you need any requirements clarified
 
-public class CodingKata {
+public class ConvertArrayToString {
     public static void main(String[] args) {
 //        int[] numbers = {1, 0, 2, 4};
         int[] numbers = {0, 0, 2, 4};
         int result = CodingKata1(numbers);
         System.out.println(result);
     }
-
-    // TODO: change method name
+    
     public static Integer CodingKata1(int[] sequence) {
         String concatString = "";
         for (int element : sequence) {
-            concatString += String.valueOf(checkNegative(element));
+            concatString += String.valueOf(isNegative(element));
         }
         return Integer.parseInt(concatString);
     }
-//     TODO: change method name
-//    should this be public??
-    public static int checkNegative(int number) {
+
+    public static int isNegative(int number) {
         if (number < 0) {
             number = -number;
         }
