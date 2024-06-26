@@ -13,7 +13,7 @@ public class ConvertArrayToString {
         int result = CodingKata1(numbers);
         System.out.println(result);
     }
-    
+
     public static Integer CodingKata1(int[] sequence) {
         String concatString = "";
         for (int element : sequence) {
@@ -29,6 +29,3 @@ public class ConvertArrayToString {
         return number;
     }
 }
-
-// 1. intention
-
