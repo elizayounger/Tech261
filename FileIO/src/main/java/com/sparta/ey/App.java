@@ -8,29 +8,25 @@ import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader
-                    ("src/main/resources/employees-corrupted(in).csv"));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader
+                ("src/main/resources/employees-corrupted(in).csv"))) {
 
             ArrayList<String> headers = new ArrayList<>();
             ArrayList<String> bufferedFile = new ArrayList<>();
             String line;
-
             if ((line = bufferedReader.readLine()) != null) {
                 headers.add(line);
             }
             while ((line = bufferedReader.readLine()) != null) {
                 bufferedFile.add(line);
             }
-
-            for (String printLine: bufferedFile) {
+            for (String printLine : bufferedFile) {
                 System.out.println(printLine);
             }
-
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
