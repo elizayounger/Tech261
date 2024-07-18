@@ -1,48 +1,51 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.List;
 
-public class TestEmployeeDataReader {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-    // successfully returns List<String> of employees when called
+public class EmployeeDataReaderTest {
 
-    @DisplayName("Given csv file, returns the data as a List<String>")
-    @ParameterizedTest
-    @CsvSource({
-            "293375,Mr.,Jarred,C,Dews,M,jarred.dews@gmail.com,12/20/1970,1/28/2009,183406",
-            "707693,Hon.,Blake,X,Heredia,M,blake.heredia@gmail.com,1/23/1976,04/04/2005,148091",
-            "784563,Mr.,Wally,F,Barbour,M,wally.barbour@gmail.com,05/12/1978,01/10/2010,121605",
-            "538924,Mrs.,Hiroko,L,Gupta,F,hiroko.gupta@gmail.com,07/07/1977,09/09/2001,188357",
-            "154258,Prof.,Marlon,Z,Ney,M,marlon.ney@yahoo.co.uk,6/19/1990,11/09/2011,136216",
-            "173003,Mrs.,Willia,Q,Weigand,F,willia.weigand@gmail.com,10/20/1960,7/30/2005,158292",
-            "133641,Mr.,Chas,F,Hurdle,M,chas.hurdle@gmail.com,4/20/1995,5/28/2016,45102"
-    })
-    public void givenCSVFileReturnsList() {
-        String[] stringExpected = {
-            "293375,Mr.,Jarred,C,Dews,M,jarred.dews@gmail.com,12/20/1970,1/28/2009,183406",
-            "707693,Hon.,Blake,X,Heredia,M,blake.heredia@gmail.com,1/23/1976,04/04/2005,148091",
-            "784563,Mr.,Wally,F,Barbour,M,wally.barbour@gmail.com,05/12/1978,01/10/2010,121605",
-            "538924,Mrs.,Hiroko,L,Gupta,F,hiroko.gupta@gmail.com,07/07/1977,09/09/2001,188357",
-            "154258,Prof.,Marlon,Z,Ney,M,marlon.ney@yahoo.co.uk,6/19/1990,11/09/2011,136216",
-            "173003,Mrs.,Willia,Q,Weigand,F,willia.weigand@gmail.com,10/20/1960,7/30/2005,158292",
-            "133641,Mr.,Chas,F,Hurdle,M,chas.hurdle@gmail.com,4/20/1995,5/28/2016,45102"
-        };
-        List<String> expected = new ArrayList<>(Arrays.asList(stringExpected));
-        List<String> actual = EmployeeDataReader.getEmployees();
-        Assertions.assertEquals(expected, actual);
+    @Mock
+    private BufferedReader mockBufferedReader;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
 
-    // throws an exception if file empty
+    @Test
+    public void testGetEmployeeData() throws Exception {
+        // Create mock data
+        String headerLine = "ID,Name,Position";
+        String employee1 = "1,John Doe,Developer";
+        String employee2 = "2,Jane Smith,Designer";
+
+        // Mock BufferedReader behavior
+        when(mockBufferedReader.readLine())
+                .thenReturn(headerLine)
+                .thenReturn(employee1)
+                .thenReturn(employee2)
+                .thenReturn(null);
+
+        // Mock FileReader to return the mocked BufferedReader
+        FileReader fileReader = mock(FileReader.class);
+        whenNew(FileReader.class).withArguments("src/main/resources/employees.csv").thenReturn(fileReader);
+        when(fileReader.read()).thenReturn(mockBufferedReader);
+
+        // Call the method under test
+        List<String> employeeData = EmployeeDataReader.getEmployeeData();
+
+        // Verify the result
+        assertEquals(2, employeeData.size());
+        assertEquals(employee1, employeeData.get(0));
+        assertEquals(employee2, employeeData.get(1));
+    }
 }
-
-
-
-
-
-

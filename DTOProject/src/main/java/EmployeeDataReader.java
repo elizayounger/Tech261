@@ -1,13 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDataReader {
 
-    public static List<String> getEmployees() {
+    public static List<String> getEmployeeData() {
         List<String> reader = new ArrayList<>();
         List<String> header = new ArrayList<>();
         try (BufferedReader file = new BufferedReader(new FileReader("src/main/resources/employees.csv"))) {
